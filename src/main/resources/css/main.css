@@ -1,5 +1,7 @@
 .vbox {
     -fx-background-color: white;
+    -fx-border-width: 4px;
+    -fx-border-color: black;
 }
 
 .button, .combo-box {
@@ -22,7 +24,6 @@
 .list-view {
     -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(244, 244, 244, 0.8) 100%);
     -fx-text-fill: #999;
-    -fx-padding: 10px;
     -fx-cursor: null;
     -fx-border-radius: 0;
     -fx-border-width: 0;
@@ -31,24 +32,45 @@
     -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
 }
 
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover,
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover{
-    -fx-background-color: black;
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled{
     -fx-border-width: 1px 0;
-    -fx-border-color: #999;
+    -fx-border-color: rgba(244, 244, 244, 0.8);
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover,
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover{
+    -fx-background-color: linear-gradient(to bottom, rgba(34, 34, 34, 0.8) 0%, rgba(51, 51, 51, 0.8) 100%);
+    -fx-text-fill: white;
+}
+
+.scroll-bar:vertical{
+    -fx-background-color: linear-gradient(to bottom, rgba(216, 216, 216, 0.8) 0%, rgba(153, 153, 153, 0.8) 100%);
+}
+
+.scroll-bar > .increment-arrow,
+.scroll-bar > .decrement-arrow{
+    -fx-background-color: linear-gradient(to bottom, rgba(34, 34, 34, 0.8) 0%, rgba(51, 51, 51, 0.8) 100%);
 }
 
 #lblTitulo {
-    -fx-text-fill: black;
-    -fx-font-weight: bolder;
-    -fx-font-size: 42pt;
+    -fx-text-fill: #222;
+    -fx-font-size: 28pt;
 }
 
-#lblMayusculas, #lblMinusculas {
-    -fx-text-fill: black;
-    -fx-font-size: 16pt;
-    -fx-font-weight: bolder;
+#lblTitulo2{
+    -fx-text-fill: orange;
+    -fx-font-weight: bold;
+    -fx-font-size: 32pt;
+}
+
+#lblEstadisticas, #lblLetras {
+    -fx-background-color: linear-gradient(to bottom, rgba(216, 216, 216, 0.8) 0%, rgba(153, 153, 153, 0.8) 100%);
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+    -fx-padding: 0 5px;
+    -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
 }
 
 #panelDibujo{

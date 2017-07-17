@@ -11,11 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.PrefixSelectionComboBox?>
 
-<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" stylesheets="/css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pucmm.mineriadedatos2017.controladora.PantallaPrincipalControladora">
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" stylesheets="/css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pucmm.mineriadedatos2017.controladora.PantallaPrincipalControladora">
    <children>
       <VBox fx:id="vBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblTitulo" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="30.0" text="OCRFX" textAlignment="CENTER" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="lblTitulo" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="30.0" text="OCR" textAlignment="CENTER" />
+                  <Label fx:id="lblTitulo2" alignment="CENTER" minHeight="30.0" text="FX" textAlignment="CENTER" />
+               </children>
+            </HBox>
             <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0">
                <center>
                   <Pane fx:id="panelDibujo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
@@ -23,7 +28,7 @@
                <left>
                   <VBox fx:id="vBoxLetras" prefHeight="450.0" prefWidth="350.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lblLetras" text="Porciento de prediccion de las letras:">
+                        <Label fx:id="lblLetras" prefWidth="350.0" text="Porciento de prediccion de las letras">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
@@ -39,7 +44,7 @@
                <right>
                   <VBox fx:id="vBoxEstadisticas" prefHeight="400.0" prefWidth="350.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lblEstadisticas" text="Estadisticas:">
+                        <Label fx:id="lblEstadisticas" prefWidth="350.0" text="Estadisticas">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
