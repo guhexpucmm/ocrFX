@@ -2,9 +2,9 @@
     -fx-background-color: white;
 }
 
-.button {
-    -fx-background-color: #fff;
-    -fx-text-fill: #999;
+.button, .combo-box {
+    -fx-background-color: linear-gradient(to bottom, rgba(216, 216, 216, 0.8) 0%, rgba(153, 153, 153, 0.8) 100%);
+    -fx-text-fill: white;
     -fx-padding: 10px;
     -fx-cursor: hand;
     -fx-border-radius: 0;
@@ -14,28 +14,13 @@
     -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
 }
 
-.button:hover {
-    -fx-background-color: #f2f2f2;
-}
-
-.combo-box {
-    -fx-background-color: #fff;
+.button:hover, .combo-box:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(244, 244, 244, 0.8) 100%);
     -fx-text-fill: #999;
-    -fx-padding: 10px;
-    -fx-cursor: hand;
-    -fx-border-radius: 0;
-    -fx-border-width: 0;
-    -fx-border-color: #d8d8d8;
-    -fx-font-size: 12pt;
-    -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
-}
-
-.combo-box:hover {
-    -fx-background-color: #f2f2f2;
 }
 
 .list-view {
-    -fx-background-color: #fff;
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(244, 244, 244, 0.8) 100%);
     -fx-text-fill: #999;
     -fx-padding: 10px;
     -fx-cursor: null;
@@ -46,13 +31,27 @@
     -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
 }
 
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover{
+    -fx-background-color: black;
+    -fx-border-width: 1px 0;
+    -fx-border-color: #999;
+}
+
 #lblTitulo {
     -fx-text-fill: black;
     -fx-font-weight: bolder;
-    -fx-font-size: 50px;
+    -fx-font-size: 42pt;
 }
 
 #lblMayusculas, #lblMinusculas {
     -fx-text-fill: black;
-    -fx-font-size: 16px;
+    -fx-font-size: 16pt;
+    -fx-font-weight: bolder;
+}
+
+#panelDibujo{
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
 }

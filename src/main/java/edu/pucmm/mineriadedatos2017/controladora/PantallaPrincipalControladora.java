@@ -96,6 +96,8 @@ public class PantallaPrincipalControladora implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        listViewEstadisticas.getItems().add("pad");
+        listViewMayusculas.getItems().add("pad");
         setCampos();
         setRectangulo();
         setEventosRectangulo();
