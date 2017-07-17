@@ -15,14 +15,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.controlsfx.control.PrefixSelectionComboBox;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -96,10 +96,12 @@ public class PantallaPrincipalControladora implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setBackground();
         setCampos();
         setRectangulo();
         setEventosRectangulo();
+        setEnter();
+        setSpace();
+        setFocus();
     }
 
     @FXML
@@ -130,6 +132,26 @@ public class PantallaPrincipalControladora implements Initializable {
     @FXML
     void btnCerrarProgramaClick(ActionEvent event) {
         Platform.exit();
+    }
+
+    private void setEnter() {
+        vBox.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.ENTER)) {
+                entrenarComoLetra();
+            }
+        });
+    }
+
+    private void setSpace() {
+        vBox.setOnKeyPressed(event -> {
+            if (event.getCode().equals(KeyCode.SPACE)) {
+                predecir();
+            }
+        });
+    }
+
+    private void setFocus() {
+        vBox.requestFocus();
     }
 
     private void subirFoto() {
@@ -179,7 +201,7 @@ public class PantallaPrincipalControladora implements Initializable {
 
     private void setEventosRectangulo() {
         panelDibujo.setOnMouseClicked(event -> {
-            if (event.isPrimaryButtonDown()) {
+            if (event.isPrimaryButtonDown() && isInside(event)) {
                 double posX = event.getX();
                 double posY = event.getY();
 
@@ -194,7 +216,7 @@ public class PantallaPrincipalControladora implements Initializable {
                     }
                 }
             }
-            if (event.isSecondaryButtonDown()) {
+            if (event.isSecondaryButtonDown() && isInside(event)) {
                 double posX = event.getX();
                 double posY = event.getY();
 
@@ -212,7 +234,7 @@ public class PantallaPrincipalControladora implements Initializable {
         });
 
         panelDibujo.setOnMouseDragged(event -> {
-            if (event.isPrimaryButtonDown()) {
+            if (event.isPrimaryButtonDown() && isInside(event)) {
                 double posX = event.getX();
                 double posY = event.getY();
 
@@ -227,7 +249,7 @@ public class PantallaPrincipalControladora implements Initializable {
                     }
                 }
             }
-            if (event.isSecondaryButtonDown()) {
+            if (event.isSecondaryButtonDown() && isInside(event)) {
                 double posX = event.getX();
                 double posY = event.getY();
 
@@ -246,7 +268,10 @@ public class PantallaPrincipalControladora implements Initializable {
     }
 
     private boolean isInside(MouseEvent event) {
-        return false;
+        if(event.getX() >= 0 && event.getX() <= panelDibujo.getWidth() && event.getY() >= 0 && event.getY() <= panelDibujo.getHeight())
+            return true;
+        else
+            return false;
     }
 
     private ArrayList<Integer> getPixeles() {
