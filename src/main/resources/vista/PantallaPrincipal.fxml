@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.PrefixSelectionComboBox?>
+
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" stylesheets="/css/main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pucmm.mineriadedatos2017.controladora.PantallaPrincipalControladora">
+   <children>
+      <VBox fx:id="vBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" StackPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblTitulo" alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="30.0" text="OCRFX" textAlignment="CENTER" />
+            <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <Pane fx:id="panelDibujo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+               </center>
+               <left>
+                  <VBox fx:id="vBoxLetras" prefHeight="450.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lblLetras" text="Porciento de prediccion de las letras:">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ListView fx:id="listViewMayusculas" prefHeight="400.0" prefWidth="350.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ListView>
+                     </children>
+                  </VBox>
+               </left>
+               <right>
+                  <VBox fx:id="vBoxEstadisticas" prefHeight="400.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lblEstadisticas" text="Estadisticas:">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ListView fx:id="listViewEstadisticas" prefHeight="400.0" prefWidth="350.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ListView>
+                     </children>
+                  </VBox>
+               </right>
+            </BorderPane>
+            <HBox fx:id="hBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnPredecir" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnPredecirClick" text="Predecir">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnBorrar" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnBorrarClick" text="Borrar">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <PrefixSelectionComboBox fx:id="comboBoxLetra" minHeight="30.0" minWidth="200.0" onAction="#comboBoxEntrenarComoLetraClick" promptText="Entrenar como letra">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </PrefixSelectionComboBox>
+                  <Button fx:id="btnEntrenarComo" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnEntrenarComoLetraClick" text="Entrenar como letra">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnSubirFoto" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnSubirFotoClick" text="Subir foto">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="btnCerrarPrograma" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#btnCerrarProgramaClick" text="Cerrar programa">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</StackPane>
