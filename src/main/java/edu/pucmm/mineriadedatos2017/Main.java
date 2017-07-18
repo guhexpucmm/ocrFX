@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        stage.getIcons().add(new Image("/fotos/pucmm-logo.png"));
+        stage.getIcons().add(new Image("/fotos/ocrfx_icon.png"));
         stage.setTitle("OCRFX");
         stage.setScene(new EscenaUtil("/vista/PantallaPrincipal.fxml").getEscena());
         stage.setMinWidth(1300);

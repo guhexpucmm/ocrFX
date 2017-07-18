@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -48,7 +49,7 @@ public class PantallaPrincipalControladora implements Initializable {
     private VBox vBox;
 
     @FXML
-    private Label lblTitulo;
+    private ImageView imageView;
 
     @FXML
     private BorderPane borderPane;
@@ -176,6 +177,7 @@ public class PantallaPrincipalControladora implements Initializable {
     }
 
     private void setCampos() {
+        imageView.setImage(new Image("/fotos/ocrfx.png"));
         comboBoxLetra.setItems(LetraUtil.letras);
         comboBoxLetra.getSelectionModel().select(0);
         btnEntrenarComo.setText(ENTRENAR_COMO + comboBoxLetra.getValue());

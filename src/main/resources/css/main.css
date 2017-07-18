@@ -55,13 +55,14 @@
 
 #lblTitulo {
     -fx-text-fill: #d8d8d8;
+    -fx-font-weight: bolder;
     -fx-font-size: 32px;
 }
 
 #lblTitulo2{
     -fx-text-fill: orange;
     -fx-font-weight: bold;
-    -fx-font-size: 32pt;
+    -fx-font-size: 48pt;
 }
 
 #lblEstadisticas, #lblLetras {
