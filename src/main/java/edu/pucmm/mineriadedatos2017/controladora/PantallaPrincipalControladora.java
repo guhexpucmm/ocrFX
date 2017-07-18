@@ -11,13 +11,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -33,6 +33,10 @@ import java.util.ResourceBundle;
 public class PantallaPrincipalControladora implements Initializable {
 
     private final String ENTRENAR_COMO = "Entrenar como letra ";
+
+    private final KeyCombination combinacionPredecir = new KeyCodeCombination(KeyCode.SPACE, KeyCombination.CONTROL_DOWN);
+    private final KeyCombination combinacionEntrenarComo = new KeyCodeCombination(KeyCode.ENTER, KeyCombination.CONTROL_DOWN);
+    private final KeyCombination combinacionBorrar = new KeyCodeCombination(KeyCode.BACK_SPACE, KeyCombination.CONTROL_DOWN);
 
     private ArrayList<Seccion> secciones;
     private Rectangle [][] rec;
@@ -99,11 +103,11 @@ public class PantallaPrincipalControladora implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         listViewEstadisticas.getItems().add("pad");
         listViewMayusculas.getItems().add("pad");
+
         setCampos();
         setRectangulo();
         setEventosRectangulo();
-        setEnter();
-        setSpace();
+        setShortcuts();
         setFocus();
     }
 
@@ -137,19 +141,21 @@ public class PantallaPrincipalControladora implements Initializable {
         Platform.exit();
     }
 
-    private void setEnter() {
-        vBox.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.ENTER)) {
-                entrenarComoLetra();
-            }
-        });
-    }
+    private void setShortcuts() {
+        Platform.runLater(() -> {
+            btnPredecir.getScene().addEventHandler(KeyEvent.KEY_RELEASED, event -> {
+                if (combinacionEntrenarComo.match(event)) {
+                    btnEntrenarComo.fire();
+                }
 
-    private void setSpace() {
-        vBox.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.SPACE)) {
-                predecir();
-            }
+                if (combinacionPredecir.match(event)) {
+                    btnPredecir.fire();
+                }
+
+                if (combinacionBorrar.match(event)) {
+                    btnBorrar.fire();
+                }
+            });
         });
     }
 
