@@ -39,7 +39,7 @@ public class PantallaPrincipalControladora implements Initializable {
     private final KeyCombination combinacionBorrar = new KeyCodeCombination(KeyCode.BACK_SPACE, KeyCombination.CONTROL_DOWN);
 
     private ArrayList<Seccion> secciones;
-    private Rectangle [][] rec;
+    private Rectangle[][] rec;
 
     @FXML
     private StackPane stackPane;
@@ -142,20 +142,14 @@ public class PantallaPrincipalControladora implements Initializable {
     }
 
     private void setShortcuts() {
-        Platform.runLater(() -> {
-            btnPredecir.getScene().addEventHandler(KeyEvent.KEY_RELEASED, event -> {
-                if (combinacionEntrenarComo.match(event)) {
-                    btnEntrenarComo.fire();
-                }
-
-                if (combinacionPredecir.match(event)) {
-                    btnPredecir.fire();
-                }
-
-                if (combinacionBorrar.match(event)) {
-                    btnBorrar.fire();
-                }
-            });
+        stackPane.setOnKeyPressed(event -> {
+            if (combinacionEntrenarComo.match(event)) {
+                btnEntrenarComo.fire();
+            } else if (combinacionPredecir.match(event)) {
+                btnPredecir.fire();
+            } else if (combinacionBorrar.match(event)) {
+                btnBorrar.fire();
+            }
         });
     }
 
@@ -172,7 +166,7 @@ public class PantallaPrincipalControladora implements Initializable {
             try {
                 image = new Image(file.toURI().toURL().toString());
 
-                if(image.getWidth() != 400 || image.getHeight() != 400) {
+                if (image.getWidth() != 400 || image.getHeight() != 400) {
                     new Alerta("Error!", "La imagen debe de ser 400 x 400", Alert.AlertType.ERROR).showAndWait();
                 }
             } catch (MalformedURLException e) {
@@ -191,10 +185,10 @@ public class PantallaPrincipalControladora implements Initializable {
         double width = 20;
         int n = 20;
 
-        rec = new Rectangle [n][n];
+        rec = new Rectangle[n][n];
 
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 rec[i][j] = new Rectangle();
                 rec[i][j].setX(i * width);
                 rec[i][j].setY(j * width);
@@ -214,7 +208,7 @@ public class PantallaPrincipalControladora implements Initializable {
                 double posX = event.getX();
                 double posY = event.getY();
 
-                int colX = (int)(posX / 20);
+                int colX = (int) (posX / 20);
                 int colY = (int) (posY / 20);
 
                 rec[colX][colY].setFill(Color.BLACK);
@@ -229,7 +223,7 @@ public class PantallaPrincipalControladora implements Initializable {
                 double posX = event.getX();
                 double posY = event.getY();
 
-                int colX = (int)(posX / 20);
+                int colX = (int) (posX / 20);
                 int colY = (int) (posY / 20);
 
                 rec[colX][colY].setFill(null);
@@ -247,7 +241,7 @@ public class PantallaPrincipalControladora implements Initializable {
                 double posX = event.getX();
                 double posY = event.getY();
 
-                int colX = (int)(posX / 20);
+                int colX = (int) (posX / 20);
                 int colY = (int) (posY / 20);
 
                 rec[colX][colY].setFill(Color.BLACK);
@@ -262,7 +256,7 @@ public class PantallaPrincipalControladora implements Initializable {
                 double posX = event.getX();
                 double posY = event.getY();
 
-                int colX = (int)(posX / 20);
+                int colX = (int) (posX / 20);
                 int colY = (int) (posY / 20);
 
                 rec[colX][colY].setFill(null);
@@ -277,7 +271,7 @@ public class PantallaPrincipalControladora implements Initializable {
     }
 
     private boolean isInside(MouseEvent event) {
-        if(event.getX() >= 0 && event.getX() <= panelDibujo.getWidth() && event.getY() >= 0 && event.getY() <= panelDibujo.getHeight())
+        if (event.getX() >= 0 && event.getX() <= panelDibujo.getWidth() && event.getY() >= 0 && event.getY() <= panelDibujo.getHeight())
             return true;
         else
             return false;
@@ -286,7 +280,7 @@ public class PantallaPrincipalControladora implements Initializable {
     private ArrayList<Integer> getPixeles() {
         ArrayList<Integer> pixeles = new ArrayList<>();
 
-        for(Seccion seccion : secciones) {
+        for (Seccion seccion : secciones) {
             if (seccion.isActivo())
                 pixeles.add(1);
             else
@@ -297,8 +291,8 @@ public class PantallaPrincipalControladora implements Initializable {
     }
 
     private void limpiar() {
-        for(int i=0; i < 20; i++){
-            for(int j=0; j<20; j++){
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
                 rec[i][j].setFill(null);
             }
         }
