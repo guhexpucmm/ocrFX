@@ -5,6 +5,7 @@ import edu.pucmm.mineriadedatos2017.componentes.Seccion;
 import edu.pucmm.mineriadedatos2017.data.LeerEscribirArchivos;
 import edu.pucmm.mineriadedatos2017.util.LetraUtil;
 import edu.pucmm.mineriadedatos2017.weka.AlgoritmoNaiveBayes;
+import edu.pucmm.mineriadedatos2017.weka.AlgoritmoSMO;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -335,8 +336,8 @@ public class PantallaPrincipalControladora implements Initializable {
     private void predecir() {
         if (!isVacio()) {
             stackPane.setCursor(Cursor.WAIT);
-            AlgoritmoNaiveBayes algoritmoNaiveBayes = new AlgoritmoNaiveBayes();
-            algoritmoNaiveBayes.ejecutarAlgortimo(getPixeles());
+            AlgoritmoSMO algoritmo = new AlgoritmoSMO();
+            algoritmo.ejecutarAlgortimo(getPixeles());
             stackPane.setCursor(Cursor.DEFAULT);
         } else
             new Alerta("Error!", "No hay nada dibujado.", Alert.AlertType.ERROR).showAndWait();

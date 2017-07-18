@@ -54,8 +54,8 @@
 }
 
 #lblTitulo {
-    -fx-text-fill: #222;
-    -fx-font-size: 28pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-font-size: 32px;
 }
 
 #lblTitulo2{
