@@ -338,7 +338,7 @@ public class PantallaPrincipalControladora implements Initializable {
     private void predecir() {
         if (!isVacio()) {
             stackPane.setCursor(Cursor.WAIT);
-            AlgoritmoSMO algoritmo = new AlgoritmoSMO();
+            AlgoritmoNaiveBayes algoritmo = new AlgoritmoNaiveBayes();
             algoritmo.ejecutarAlgortimo(getPixeles());
             stackPane.setCursor(Cursor.DEFAULT);
         } else
