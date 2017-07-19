@@ -338,8 +338,7 @@ public class PantallaPrincipalControladora implements Initializable {
     private void predecir() {
         if (!isVacio()) {
             stackPane.setCursor(Cursor.WAIT);
-            AlgoritmoNaiveBayes algoritmo = new AlgoritmoNaiveBayes();
-            algoritmo.ejecutarAlgortimo(getPixeles());
+            AlgoritmoNaiveBayes.getInstancia().ejecutarAlgortimo(getPixeles());
             stackPane.setCursor(Cursor.DEFAULT);
         } else
             new Alerta("Error!", "No hay nada dibujado.", Alert.AlertType.ERROR).showAndWait();

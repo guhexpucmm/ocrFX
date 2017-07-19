@@ -16,10 +16,23 @@ import weka.filters.unsupervised.attribute.StringToNominal;
 import java.util.ArrayList;
 
 public class AlgoritmoNaiveBayes {
+    private static AlgoritmoNaiveBayes instancia;
+
     private Instances data;
     private NaiveBayes bayes;
     private FilteredClassifier fc;
     private Instance inst;
+
+    private AlgoritmoNaiveBayes() {
+
+    }
+
+    public static AlgoritmoNaiveBayes getInstancia() {
+        if (instancia == null)
+            instancia = new AlgoritmoNaiveBayes();
+
+        return instancia;
+    }
 
     public void ejecutarAlgortimo(ArrayList<Integer> pixeles) {
         try{
