@@ -78,3 +78,21 @@
     -fx-background-color: rgba(255, 255, 255, 0.8);
     -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
 }
+
+.dialog-pane > .button-bar > .container {
+    -fx-background-color: linear-gradient(to bottom, rgba(244, 244, 244, 0.8)0%, rgba(255, 255, 255, 0.8) 100%);
+    -fx-content-display: center;
+}
+
+.alert.information.dialog-pane {
+    -fx-graphic: none;
+    -fx-background-color: white;
+}
+
+.dialog-pane > .content.label {
+    -fx-background-color: white;
+    -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+    -fx-text-fill: orange;
+    -fx-font-weight: bold;
+    -fx-font-size: 16.0pt;
+}
