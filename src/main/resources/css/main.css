@@ -19,7 +19,7 @@
 
 .button:hover, .combo-box:hover {
     -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(244, 244, 244, 0.8) 100%);
-    -fx-font-size: 16pt;
+    -fx-font-size: 12pt;
     -fx-font-weight: bolder;
     -fx-text-fill: orange;
 }
@@ -87,7 +87,7 @@
     -fx-content-display: center;
 }
 
-.alert.information.dialog-pane {
+.alert.information.dialog-pane, .alert.error.dialog-pane, .alert.warning.dialog-pane, .alert.confirmation.dialog-pane {
     -fx-graphic: none;
     -fx-background-color: white;
 }
