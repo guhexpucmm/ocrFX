@@ -96,7 +96,6 @@ public class PantallaPrincipalControladora implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         listViewEstadisticas.getItems().add("pad");
-        listViewMayusculas.getItems().add("pad");
 
         setCampos();
         setRectangulo();
@@ -125,6 +124,7 @@ public class PantallaPrincipalControladora implements Initializable {
         comboBoxSeleccion();
     }
 
+    //Funcion para configurar los accesos directos con teclas del teclado
     private void setShortcuts() {
         stackPane.setOnKeyPressed(event -> {
             if (combinacionEntrenarComo.match(event)) {
@@ -137,10 +137,12 @@ public class PantallaPrincipalControladora implements Initializable {
         });
     }
 
+    //Funcion para hacer que el vbox coja focus desde que inicie el programa
     private void setFocus() {
         vBox.requestFocus();
     }
 
+    //Funcion para que la ventana tenga los campos por defectos definidos
     private void setCampos() {
         imageView.setImage(new Image("/fotos/ocrfx.png"));
         comboBoxLetra.setItems(LetraUtil.letras);
@@ -148,6 +150,7 @@ public class PantallaPrincipalControladora implements Initializable {
         btnEntrenarComo.setText(ENTRENAR_COMO + comboBoxLetra.getValue());
     }
 
+    //Funcion para hacer el grid en el panel de dibujo, los cuadrados
     private void setRectangulo() {
         double width = 20;
         int n = 20;
@@ -169,6 +172,7 @@ public class PantallaPrincipalControladora implements Initializable {
         }
     }
 
+    //Funcion para hacer los eventos del rectangulo, cuando se da click y cuando se arrastra el click seleccionado
     private void setEventosRectangulo() {
         panelDibujo.setOnMouseClicked(event -> {
             if (event.isPrimaryButtonDown() && isInside(event)) {
@@ -237,6 +241,7 @@ public class PantallaPrincipalControladora implements Initializable {
         });
     }
 
+    //Funcion para asegurarse que el click o arrastre que se haga sea dentro del panel y no fuera
     private boolean isInside(MouseEvent event) {
         if (event.getX() >= 0 && event.getX() <= panelDibujo.getWidth() && event.getY() >= 0 && event.getY() <= panelDibujo.getHeight())
             return true;
@@ -244,6 +249,7 @@ public class PantallaPrincipalControladora implements Initializable {
             return false;
     }
 
+    //Funcion para cojer los pixeles o los cuadros negros que fueron dibujados para formar el arreglo de 0s y 1s
     private ArrayList<Integer> getPixeles() {
         ArrayList<Integer> pixeles = new ArrayList<>();
 
@@ -257,6 +263,7 @@ public class PantallaPrincipalControladora implements Initializable {
         return pixeles;
     }
 
+    //Funcion para borrar todos los cuadros
     private void limpiar() {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
@@ -269,6 +276,7 @@ public class PantallaPrincipalControladora implements Initializable {
         }
     }
 
+    //Funcion para verificar si el panel de dibujo esta vacio completamente
     private boolean isVacio() {
         int cont = 0;
 
@@ -283,10 +291,12 @@ public class PantallaPrincipalControladora implements Initializable {
             return false;
     }
 
+    //Funcion para borrar el panel de dibujo
     private void borrar() {
         limpiar();
     }
 
+    //Funcion para entrenar una letra
     private void entrenarComoLetra() {
         if (!isVacio()) {
             String letra = comboBoxLetra.getValue();
@@ -300,6 +310,7 @@ public class PantallaPrincipalControladora implements Initializable {
         limpiar();
     }
 
+    //Funcion para predecir una letra
     private void predecir() {
         if (!isVacio()) {
             stackPane.setCursor(Cursor.WAIT);
@@ -309,10 +320,12 @@ public class PantallaPrincipalControladora implements Initializable {
             new Alerta("Error!", "No hay nada dibujado.", Alert.AlertType.ERROR).showAndWait();
     }
 
+    //Funcion para cojer la seleccion del combobox
     private void comboBoxSeleccion() {
         btnEntrenarComo.setText(ENTRENAR_COMO + comboBoxLetra.getValue());
     }
 
+    //Funcion para poner una imagen de background en el stackpane
     private void setBackground() {
         Image image = new Image("/fotos/fondo_principal.png");
         BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));

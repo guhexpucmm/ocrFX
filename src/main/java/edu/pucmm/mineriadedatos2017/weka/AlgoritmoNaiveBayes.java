@@ -4,6 +4,8 @@ import edu.pucmm.mineriadedatos2017.alerta.Alerta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import weka.classifiers.Classifier;
+import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.DenseInstance;
@@ -14,6 +16,8 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToNominal;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 public class AlgoritmoNaiveBayes {
     private static AlgoritmoNaiveBayes instancia;
@@ -24,7 +28,11 @@ public class AlgoritmoNaiveBayes {
     private Instance inst;
 
     private AlgoritmoNaiveBayes() {
-
+        try {
+            prueba();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static AlgoritmoNaiveBayes getInstancia() {
@@ -87,5 +95,25 @@ public class AlgoritmoNaiveBayes {
         }catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public ObservableList<String> getEstadisticas() {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        ArrayList<String> abecedario = null;
+        list.add("Letra                      Precision");//6 tab
+
+        String letras = inst.dataset().attribute(20).toString();
+        String letrasFiltradas = letras.substring(18, letras.length() - 1);
+
+        abecedario = new ArrayList<>(Arrays.asList(letrasFiltradas.split(",")));
+        abecedario.stream().forEach(s -> {
+            list.add(s + "                          " + 0.0);//4 space + 6 tabs
+        });
+
+        return list;
+    }
+
+    public void prueba() throws Exception {
+
     }
 }
