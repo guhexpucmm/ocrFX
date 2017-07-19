@@ -88,10 +88,4 @@ public class AlgoritmoNaiveBayes {
             ex.printStackTrace();
         }
     }
-
-    public ObservableList<String> estadisticasMayusculas() {
-        ObservableList<String> list = FXCollections.observableArrayList();
-
-        return null;
-    }
 }
