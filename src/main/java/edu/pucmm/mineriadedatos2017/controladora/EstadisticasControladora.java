@@ -36,6 +36,7 @@ public class EstadisticasControladora implements Initializable {
         textArea.appendText(AlgoritmoNaiveBayes.getInstancia().estadistica);
     }
 
+
     @FXML
     void btnCerrarClick(ActionEvent event) {
         cerrar();
