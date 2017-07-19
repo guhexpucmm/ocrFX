@@ -3,6 +3,7 @@ package edu.pucmm.mineriadedatos2017.controladora;
 import edu.pucmm.mineriadedatos2017.alerta.Alerta;
 import edu.pucmm.mineriadedatos2017.componentes.Seccion;
 import edu.pucmm.mineriadedatos2017.data.LeerEscribirArchivos;
+import edu.pucmm.mineriadedatos2017.util.EscenaUtil;
 import edu.pucmm.mineriadedatos2017.util.LetraUtil;
 import edu.pucmm.mineriadedatos2017.weka.AlgoritmoJ48;
 import edu.pucmm.mineriadedatos2017.weka.AlgoritmoNaiveBayes;
@@ -23,6 +24,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.controlsfx.control.PrefixSelectionComboBox;
 
 import java.io.File;
@@ -58,24 +61,6 @@ public class PantallaPrincipalControladora implements Initializable {
     private Pane panelDibujo;
 
     @FXML
-    private VBox vBoxLetras;
-
-    @FXML
-    private Label lblLetras;
-
-    @FXML
-    private ListView<String> listViewMayusculas;
-
-    @FXML
-    private VBox vBoxEstadisticas;
-
-    @FXML
-    private Label lblEstadisticas;
-
-    @FXML
-    private ListView<String> listViewEstadisticas;
-
-    @FXML
     private HBox hBox;
 
     @FXML
@@ -90,14 +75,15 @@ public class PantallaPrincipalControladora implements Initializable {
     @FXML
     private Button btnEntrenarComo;
 
+    @FXML
+    private Button btnEstadisticas;
+
     public PantallaPrincipalControladora() {
         secciones = new ArrayList<>();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        listViewEstadisticas.getItems().add("pad");
-
         setCampos();
         setRectangulo();
         setEventosRectangulo();
@@ -123,6 +109,11 @@ public class PantallaPrincipalControladora implements Initializable {
     @FXML
     void comboBoxEntrenarComoLetraClick(ActionEvent event) {
         comboBoxSeleccion();
+    }
+
+    @FXML
+    void btnVerEstadisticasClick(ActionEvent event) {
+        verEstadisticas();
     }
 
     //Funcion para configurar los accesos directos con teclas del teclado
@@ -331,5 +322,17 @@ public class PantallaPrincipalControladora implements Initializable {
         Image image = new Image("/fotos/fondo_principal.png");
         BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
         stackPane.setBackground(new Background(backgroundImage));
+    }
+
+    //Funcion para ver estadisticas del modelo predecido
+    private void verEstadisticas() {
+        Stage stage = new Stage();
+        stage.setScene(new EscenaUtil("/vista/Estadisticas.fxml").getEscena());
+        stage.setTitle("Visualizacion de estadisticas");
+        stage.setMinWidth(1000);
+        stage.setMinHeight(600);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.toFront();
+        stage.show();
     }
 }
