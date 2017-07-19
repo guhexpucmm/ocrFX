@@ -31,6 +31,8 @@ public class AlgoritmoNaiveBayes {
     private FilteredClassifier fc;
     private Instance inst;
 
+    public String estadistica = getEstadistica().toString();
+
     private AlgoritmoNaiveBayes() {
         try {
             prueba();
@@ -86,9 +88,7 @@ public class AlgoritmoNaiveBayes {
             stn.setOptions(options);
             stn.setInputFormat(data);
             Instances newData = Filter.useFilter(data, stn);
-
             fc.buildClassifier(newData);
-
             double pred = fc.classifyInstance(newData.instance(newData.numInstances() - 1));
 
             String resultado = newData.classAttribute().value((int) pred);
@@ -101,48 +101,41 @@ public class AlgoritmoNaiveBayes {
         }
     }
 
-    public ObservableList<String> getEstadisticas() {
-        ObservableList<String> list = FXCollections.observableArrayList();
-        ArrayList<String> abecedario = null;
-        list.add("Letra                      Precision");//6 tab
-
-        String letras = inst.dataset().attribute(20).toString();
-        String letrasFiltradas = letras.substring(18, letras.length() - 1);
-
-        abecedario = new ArrayList<>(Arrays.asList(letrasFiltradas.split(",")));
-        abecedario.stream().forEach(s -> {
-            list.add(s + "                          " + 0.0);//4 space + 6 tabs
-        });
-
-        return list;
-    }
-
-    public StringBuilder imprimir() {
+    public StringBuilder getEstadistica() {
         try {
             StringBuilder stringBuilder = new StringBuilder();
-            ArffLoader arffLoader = new ArffLoader();
-            File file = new File("weka/ocr.arff");
-            arffLoader.setFile(file);
+            ConverterUtils.DataSource source = new ConverterUtils.DataSource("weka/ocr.arff");
+            data = source.getDataSet();
 
-            Instances instances = arffLoader.getStructure();
-            instances.setClassIndex(instances.numAttributes() - 1);
+            if (data.classIndex() == -1)
+                data.setClassIndex(data.numAttributes() - 1);
 
-            NaiveBayesUpdateable naiveBayesUpdateable = new NaiveBayesUpdateable();
-            naiveBayesUpdateable.buildClassifier(instances);
-            Instance current;
+            bayes =  new NaiveBayes();
+            bayes.setBatchSize("100");
 
-            while ((current = arffLoader.getNextInstance(instances)) != null) {
-                naiveBayesUpdateable.updateClassifier(current);
-                stringBuilder.append(naiveBayesUpdateable);
-            }
+            fc = new FilteredClassifier();
+            fc.setClassifier(bayes);
+
+            inst = new DenseInstance(data.numAttributes());
+            inst.setDataset(data);
+
+            String[] options = new String[2];
+            options[0] = "-R";
+            options[1] = "first-last";
+            StringToNominal stn = new StringToNominal();
+            stn.setOptions(options);
+            stn.setInputFormat(data);
+            Instances newData = Filter.useFilter(data, stn);
+            fc.buildClassifier(newData);
+
+            stringBuilder.append(fc.toString());
 
             return stringBuilder;
-        } catch (IOException e) {
+        }catch(Exception e){
             e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
+
     }
 
     public void prueba() throws Exception {
