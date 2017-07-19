@@ -1,15 +1,11 @@
 package edu.pucmm.mineriadedatos2017.weka;
 
-/**
- * Created by jeanl on 17 jul 2017.
- */
-
 import edu.pucmm.mineriadedatos2017.alerta.Alerta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import weka.classifiers.functions.SMO;
 import weka.classifiers.meta.FilteredClassifier;
+import weka.classifiers.trees.J48;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
@@ -19,17 +15,20 @@ import weka.filters.unsupervised.attribute.StringToNominal;
 
 import java.util.ArrayList;
 
-public class AlgoritmoSMO {
-    private static AlgoritmoSMO instancia;
+/**
+ * Created by jeanl on 19 jul 2017.
+ */
+public class AlgoritmoJ48 {
+    private static AlgoritmoJ48 instancia;
 
     private Instances data;
-    private SMO smo;
+    private J48 j48;
     private FilteredClassifier fc;
     private Instance inst;
 
-    public static AlgoritmoSMO getInstancia() {
+    public static AlgoritmoJ48 getInstancia() {
         if (instancia == null)
-            instancia = new AlgoritmoSMO();
+            instancia = new AlgoritmoJ48();
 
         return instancia;
     }
@@ -42,11 +41,11 @@ public class AlgoritmoSMO {
             if (data.classIndex() == -1)
                 data.setClassIndex(data.numAttributes() - 1);
 
-            smo =  new SMO();
-            smo.setBatchSize("100");
+            j48 =  new J48();
+            j48.setBatchSize("100");
 
             fc = new FilteredClassifier();
-            fc.setClassifier(smo);
+            fc.setClassifier(j48);
 
             inst = new DenseInstance(data.numAttributes());
             inst.setDataset(data);

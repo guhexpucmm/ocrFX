@@ -4,6 +4,7 @@ import edu.pucmm.mineriadedatos2017.alerta.Alerta;
 import edu.pucmm.mineriadedatos2017.componentes.Seccion;
 import edu.pucmm.mineriadedatos2017.data.LeerEscribirArchivos;
 import edu.pucmm.mineriadedatos2017.util.LetraUtil;
+import edu.pucmm.mineriadedatos2017.weka.AlgoritmoJ48;
 import edu.pucmm.mineriadedatos2017.weka.AlgoritmoNaiveBayes;
 import edu.pucmm.mineriadedatos2017.weka.AlgoritmoSMO;
 import javafx.application.Platform;
