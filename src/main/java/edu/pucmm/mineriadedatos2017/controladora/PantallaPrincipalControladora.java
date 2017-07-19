@@ -16,8 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -90,12 +89,6 @@ public class PantallaPrincipalControladora implements Initializable {
     @FXML
     private Button btnEntrenarComo;
 
-    @FXML
-    private Button btnSubirFoto;
-
-    @FXML
-    private Button btnCerrarPrograma;
-
     public PantallaPrincipalControladora() {
         secciones = new ArrayList<>();
     }
@@ -132,16 +125,6 @@ public class PantallaPrincipalControladora implements Initializable {
         comboBoxSeleccion();
     }
 
-    @FXML
-    void btnSubirFotoClick(ActionEvent event) {
-        subirFoto();
-    }
-
-    @FXML
-    void btnCerrarProgramaClick(ActionEvent event) {
-        Platform.exit();
-    }
-
     private void setShortcuts() {
         stackPane.setOnKeyPressed(event -> {
             if (combinacionEntrenarComo.match(event)) {
@@ -156,24 +139,6 @@ public class PantallaPrincipalControladora implements Initializable {
 
     private void setFocus() {
         vBox.requestFocus();
-    }
-
-    private void subirFoto() {
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(btnEntrenarComo.getScene().getWindow());
-
-        if (file != null) {
-            Image image = null;
-            try {
-                image = new Image(file.toURI().toURL().toString());
-
-                if (image.getWidth() != 400 || image.getHeight() != 400) {
-                    new Alerta("Error!", "La imagen debe de ser 400 x 400", Alert.AlertType.ERROR).showAndWait();
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     private void setCampos() {

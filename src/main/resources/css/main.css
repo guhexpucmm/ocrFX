@@ -7,18 +7,21 @@
 .button, .combo-box {
     -fx-background-color: linear-gradient(to bottom, rgba(216, 216, 216, 0.8) 0%, rgba(153, 153, 153, 0.8) 100%);
     -fx-text-fill: white;
-    -fx-padding: 10px;
+    -fx-padding: 0px;
     -fx-cursor: hand;
     -fx-border-radius: 0;
     -fx-border-width: 0;
     -fx-border-color: #d8d8d8;
     -fx-font-size: 12pt;
+    -fx-font-weight: bolder;
     -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
 }
 
 .button:hover, .combo-box:hover {
     -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(244, 244, 244, 0.8) 100%);
-    -fx-text-fill: #999;
+    -fx-font-size: 16pt;
+    -fx-font-weight: bolder;
+    -fx-text-fill: orange;
 }
 
 .list-view {
@@ -41,7 +44,7 @@
 .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
 .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover{
     -fx-background-color: linear-gradient(to bottom, rgba(34, 34, 34, 0.8) 0%, rgba(51, 51, 51, 0.8) 100%);
-    -fx-text-fill: white;
+    -fx-text-fill: orange;
 }
 
 .scroll-bar:vertical{

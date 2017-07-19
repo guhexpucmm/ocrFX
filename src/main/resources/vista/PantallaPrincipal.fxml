@@ -64,38 +64,28 @@
             </BorderPane>
             <HBox fx:id="hBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnPredecir" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnPredecirClick" text="Predecir">
+                  <Button fx:id="btnPredecir" minHeight="50.0" minWidth="250.0" mnemonicParsing="false" onAction="#btnPredecirClick" text="Predecir">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnBorrar" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnBorrarClick" text="Borrar">
+                  <Button fx:id="btnBorrar" minHeight="50.0" minWidth="250.0" mnemonicParsing="false" onAction="#btnBorrarClick" text="Borrar">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <PrefixSelectionComboBox fx:id="comboBoxLetra" minHeight="50.0" minWidth="200.0" onAction="#comboBoxEntrenarComoLetraClick" promptText="Entrenar como letra">
+                  <PrefixSelectionComboBox fx:id="comboBoxLetra" minHeight="50.0" minWidth="250.0" onAction="#comboBoxEntrenarComoLetraClick" promptText="Entrenar como letra">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0" />
                      </HBox.margin>
                   </PrefixSelectionComboBox>
-                  <Button fx:id="btnEntrenarComo" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnEntrenarComoLetraClick" text="Entrenar como letra">
+                  <Button fx:id="btnEntrenarComo" minHeight="50.0" minWidth="250.0" mnemonicParsing="false" onAction="#btnEntrenarComoLetraClick" text="Entrenar como letra">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnSubirFoto" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#btnSubirFotoClick" text="Subir foto">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <Button fx:id="btnCerrarPrograma" maxWidth="1.7976931348623157E308" minHeight="50.0" mnemonicParsing="false" onAction="#btnCerrarProgramaClick" text="Cerrar programa">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </Button>
          </children>
       </VBox>
    </children>
