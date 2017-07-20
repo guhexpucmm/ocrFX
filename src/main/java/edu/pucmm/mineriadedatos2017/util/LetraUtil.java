@@ -22,6 +22,7 @@ public class LetraUtil {
         list.add("L");
         list.add("M");
         list.add("N");
+        list.add("Ñ");
         list.add("O");
         list.add("P");
         list.add("Q");
@@ -48,6 +49,7 @@ public class LetraUtil {
         list.add("l");
         list.add("m");
         list.add("n");
+        list.add("ñ");
         list.add("o");
         list.add("p");
         list.add("q");

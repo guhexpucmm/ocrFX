@@ -332,6 +332,8 @@ public class PantallaPrincipalControladora implements Initializable {
         stage.setMinWidth(1000);
         stage.setMinHeight(600);
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setMaximized(true);
+        stage.getIcons().add(new Image("/fotos/ocrfx_icon.png"));
         stage.toFront();
         stage.show();
     }

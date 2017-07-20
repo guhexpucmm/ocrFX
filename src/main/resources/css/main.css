@@ -47,7 +47,7 @@
     -fx-text-fill: orange;
 }
 
-.scroll-bar:vertical{
+.scroll-bar:vertical, .scroll-bar:horizontal{
     -fx-background-color: linear-gradient(to bottom, rgba(216, 216, 216, 0.8) 0%, rgba(153, 153, 153, 0.8) 100%);
 }
 
@@ -98,4 +98,17 @@
     -fx-text-fill: orange;
     -fx-font-weight: bold;
     -fx-font-size: 16.0pt;
+}
+
+.text-area {
+    -fx-background-color: linear-gradient(to bottom, rgba(216, 216, 216, 0.8) 0%, rgba(153, 153, 153, 0.8) 100%);
+    -fx-text-fill: black;
+    -fx-padding: 0px;
+    -fx-cursor: hand;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+    -fx-border-color: #d8d8d8;
+    -fx-font-size: 10pt;
+    -fx-font-weight: normal;
+    -fx-effect: dropshadow(three-pass-box, #222, 4, 0.0, 4, 4);
 }
