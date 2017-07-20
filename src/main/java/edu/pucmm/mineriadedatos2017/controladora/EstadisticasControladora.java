@@ -35,7 +35,7 @@ public class EstadisticasControladora implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textArea.appendText(AlgoritmoBayesNet.getInstancia().estadistica);
+        textArea.appendText(AlgoritmoNaiveBayes.getInstancia().estadistica);
     }
 
 

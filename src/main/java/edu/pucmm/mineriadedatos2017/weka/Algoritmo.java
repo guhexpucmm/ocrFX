@@ -16,7 +16,6 @@ public class Algoritmo {
     protected BayesNet bayesNet;
     protected FilteredClassifier fc;
     protected Instance inst;
-    protected String estadistica;
 
     protected Algoritmo() {
 

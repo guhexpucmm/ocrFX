@@ -1,27 +1,16 @@
 package edu.pucmm.mineriadedatos2017.weka;
 
 import edu.pucmm.mineriadedatos2017.alerta.Alerta;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-import weka.classifiers.Classifier;
-import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
-import weka.classifiers.bayes.NaiveBayesUpdateable;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.DenseInstance;
-import weka.core.Instance;
 import weka.core.Instances;
-import weka.core.converters.ArffLoader;
 import weka.core.converters.ConverterUtils;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToNominal;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
 public class AlgoritmoNaiveBayes extends Algoritmo{
     private static AlgoritmoNaiveBayes instancia;
@@ -29,7 +18,7 @@ public class AlgoritmoNaiveBayes extends Algoritmo{
     public String estadistica = getEstadistica().toString();
 
     private AlgoritmoNaiveBayes() {
-        
+
     }
 
     public static AlgoritmoNaiveBayes getInstancia() {
