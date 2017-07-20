@@ -1,13 +1,10 @@
 package edu.pucmm.mineriadedatos2017.weka;
 
 import edu.pucmm.mineriadedatos2017.alerta.Alerta;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import weka.classifiers.bayes.BayesNet;
 import weka.classifiers.meta.FilteredClassifier;
-import weka.classifiers.trees.J48;
 import weka.core.DenseInstance;
-import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils;
 import weka.filters.Filter;
@@ -15,21 +12,18 @@ import weka.filters.unsupervised.attribute.StringToNominal;
 
 import java.util.ArrayList;
 
-/**
- * Created by jeanl on 19 jul 2017.
- */
-public class AlgoritmoJ48 extends Algoritmo{
-    private static AlgoritmoJ48 instancia;
+public class AlgoritmoBayesNet extends Algoritmo {
+    private static AlgoritmoBayesNet instancia;
 
     public String estadistica = getEstadistica().toString();
 
-    private AlgoritmoJ48() {
-        super();
+    private AlgoritmoBayesNet() {
+
     }
 
-    public static AlgoritmoJ48 getInstancia() {
+    public static AlgoritmoBayesNet getInstancia() {
         if (instancia == null)
-            instancia = new AlgoritmoJ48();
+            instancia = new AlgoritmoBayesNet();
 
         return instancia;
     }
@@ -42,11 +36,11 @@ public class AlgoritmoJ48 extends Algoritmo{
             if (data.classIndex() == -1)
                 data.setClassIndex(data.numAttributes() - 1);
 
-            j48 =  new J48();
-            j48.setBatchSize("100");
+            bayesNet =  new BayesNet();
+            bayesNet.setBatchSize("100");
 
             fc = new FilteredClassifier();
-            fc.setClassifier(j48);
+            fc.setClassifier(bayes);
 
             inst = new DenseInstance(data.numAttributes());
             inst.setDataset(data);
@@ -65,7 +59,6 @@ public class AlgoritmoJ48 extends Algoritmo{
             for(int i = 0; i < data.numAttributes(); i++){
                 inst.setValue(i, valores[i]);
             }
-
             data.add(inst);
 
             String[] options = new String[2];
@@ -75,9 +68,7 @@ public class AlgoritmoJ48 extends Algoritmo{
             stn.setOptions(options);
             stn.setInputFormat(data);
             Instances newData = Filter.useFilter(data, stn);
-
             fc.buildClassifier(newData);
-
             double pred = fc.classifyInstance(newData.instance(newData.numInstances() - 1));
 
             String resultado = newData.classAttribute().value((int) pred);
@@ -99,8 +90,8 @@ public class AlgoritmoJ48 extends Algoritmo{
             if (data.classIndex() == -1)
                 data.setClassIndex(data.numAttributes() - 1);
 
-            j48 = new J48();
-            j48.setBatchSize("100");
+            bayesNet =  new BayesNet();
+            bayesNet.setBatchSize("100");
 
             fc = new FilteredClassifier();
             fc.setClassifier(bayes);
@@ -115,14 +106,15 @@ public class AlgoritmoJ48 extends Algoritmo{
             stn.setOptions(options);
             stn.setInputFormat(data);
             Instances newData = Filter.useFilter(data, stn);
-            fc.buildClassifier(data);
+            fc.buildClassifier(newData);
 
             stringBuilder.append(fc.toString());
 
             return stringBuilder;
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
             return null;
         }
+
     }
 }

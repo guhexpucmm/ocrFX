@@ -23,22 +23,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class AlgoritmoNaiveBayes {
+public class AlgoritmoNaiveBayes extends Algoritmo{
     private static AlgoritmoNaiveBayes instancia;
-
-    private Instances data;
-    private NaiveBayes bayes;
-    private FilteredClassifier fc;
-    private Instance inst;
 
     public String estadistica = getEstadistica().toString();
 
     private AlgoritmoNaiveBayes() {
-        try {
-            prueba();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
     }
 
     public static AlgoritmoNaiveBayes getInstancia() {
@@ -135,10 +126,6 @@ public class AlgoritmoNaiveBayes {
             e.printStackTrace();
             return null;
         }
-
-    }
-
-    public void prueba() throws Exception {
 
     }
 }

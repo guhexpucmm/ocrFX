@@ -1,5 +1,7 @@
 package edu.pucmm.mineriadedatos2017.controladora;
 
+import edu.pucmm.mineriadedatos2017.weka.AlgoritmoBayesNet;
+import edu.pucmm.mineriadedatos2017.weka.AlgoritmoJ48;
 import edu.pucmm.mineriadedatos2017.weka.AlgoritmoNaiveBayes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +35,7 @@ public class EstadisticasControladora implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textArea.appendText(AlgoritmoNaiveBayes.getInstancia().estadistica);
+        textArea.appendText(AlgoritmoBayesNet.getInstancia().estadistica);
     }
 
 
